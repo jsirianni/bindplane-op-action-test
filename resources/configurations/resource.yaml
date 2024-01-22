@@ -14,7 +14,7 @@ spec:
           type: k8s_cluster
           parameters:
             - name: cluster_name
-              value: stage
+              value: stage2
             - name: node_conditions_to_report
               value:
                 - Ready
@@ -37,7 +37,7 @@ spec:
           type: k8s_events
           parameters:
             - name: cluster_name
-              value: stage
+              value: stage2
             - name: namespaces
               value:
                 - kube-system
@@ -118,7 +118,7 @@ spec:
           type: k8s_container
           parameters:
             - name: cluster_name
-              value: stage
+              value: stage2
             - name: log_source
               value: file
             - name: file_path
@@ -136,7 +136,7 @@ spec:
           type: k8s_kubelet
           parameters:
             - name: cluster_name
-              value: stage
+              value: stage2
             - name: metric_groups
               value:
                 - node
