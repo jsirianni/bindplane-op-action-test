@@ -49,18 +49,13 @@ jobs:
       - name: Run BindPlane Action
         uses: jsirianni/bindplane-op-action@dev
         with:
-          # These values are hardcode to match the test instance used by
-          # this workflow. The instance does not persist. Consumers of 
-          # this action should always use secrets when passing in the remote
-          # url, username, password or api key.
-          #
-          # Remote url will never be localhost when running this action. In this
-          # case, bindplane is literally running within the runner instance.
-          remote_url: http://${{ env.MAIN_IP }}:3001
-          username: admin
-          password: admin
+          remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
+          api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
           destination_path: ./resources/destinations/resource.yaml
           configuration_path: ./resources/configurations/resource.yaml
+          configuration_output_dir: otel
+          configuration_output_branch: main
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Debug Container Logs
         if: always()
