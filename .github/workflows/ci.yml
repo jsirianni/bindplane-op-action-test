@@ -59,8 +59,8 @@ jobs:
           remote_url: http://${{ env.MAIN_IP }}:3001
           username: admin
           password: admin
-          destination_path: test/resources/destinations
-          configuration_path: test/resources/configurations
+          destination_path: ./resources/destinations/resource.yaml
+          configuration_path: ./resources/configurations/resource.yaml
 
       - name: Debug Container Logs
         if: always()
