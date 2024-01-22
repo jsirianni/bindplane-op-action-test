@@ -35,5 +35,5 @@ jobs:
           destination_path: ./resources/destinations/resource.yaml
           configuration_path: ./resources/configurations/resource.yaml
           configuration_output_dir: otel
-          configuration_output_branch: main
+          target_branch: main
           token: ${{ secrets.GITHUB_TOKEN }}
