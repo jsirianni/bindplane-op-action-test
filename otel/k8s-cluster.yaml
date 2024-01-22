@@ -27,12 +27,12 @@ processors:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: minikube
+              value: stage
     resource/source1_01HMS8GVNVFVD5TSWTKVNZS2JC:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: minikube
+              value: stage
 exporters:
     otlp/bindplane-gateway-agent:
         compression: gzip
