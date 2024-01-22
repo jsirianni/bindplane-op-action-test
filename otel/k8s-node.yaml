@@ -28,7 +28,7 @@ processors:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: stage
+              value: stage2
             - action: insert
               key: k8s.node.name
               value: ${KUBE_NODE_NAME}
@@ -36,7 +36,7 @@ processors:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: stage
+              value: stage2
             - action: insert
               key: k8s.node.name
               value: ${KUBE_NODE_NAME}
