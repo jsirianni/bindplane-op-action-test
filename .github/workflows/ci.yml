@@ -1,4 +1,4 @@
-name: CI
+name: bindplane
 on:
   pull_request:
   push:
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
+  bindplane:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
