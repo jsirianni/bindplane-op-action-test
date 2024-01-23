@@ -30,8 +30,8 @@ jobs:
       - name: Run BindPlane Action
         uses: observIQ/bindplane-op-action@dev
         with:
-          remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
-          api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
+          bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
+          bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
           destination_path: ./resources/destinations/resource.yaml
           configuration_path: ./resources/configurations/resource.yaml
           configuration_output_dir: otel
