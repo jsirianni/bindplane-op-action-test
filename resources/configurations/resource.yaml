@@ -20,7 +20,6 @@ spec:
                 - Ready
                 - DiskPressure
                 - PIDPressure
-                - NetworkUnavailable
             - name: allocatable_types_to_report
               value:
                 - cpu
