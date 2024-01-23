@@ -27,7 +27,7 @@ spec:
                 - ephemeral-storage
                 - storage
             - name: collection_interval
-              value: 60
+              value: 30
             - name: distribution
               value: kubernetes
         - id: 01HMS8GVNVFVD5TSWTKVNZS2JC
