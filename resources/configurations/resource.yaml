@@ -19,7 +19,6 @@ spec:
               value:
                 - Ready
                 - DiskPressure
-                - MemoryPressure
                 - PIDPressure
                 - NetworkUnavailable
             - name: allocatable_types_to_report
