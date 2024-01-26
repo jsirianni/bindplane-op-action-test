@@ -8,7 +8,7 @@ receivers:
             - ephemeral-storage
             - storage
         auth_type: serviceAccount
-        collection_interval: 30s
+        collection_interval: 31s
         distribution: kubernetes
         node_conditions_to_report:
             - Ready
@@ -25,7 +25,7 @@ processors:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: stage4
+              value: stage3
     resource/source1_01HMS8GVNVFVD5TSWTKVNZS2JC:
         attributes:
             - action: insert
