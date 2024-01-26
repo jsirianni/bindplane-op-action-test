@@ -10,7 +10,7 @@ spec:
         - name: hostname
           value: bindplane-gateway-agent.bindplane-agent.svc.cluster.local
         - name: grpc_port
-          value: 4317
+          value: 44317
         - name: http_port
           value: 4318
         - name: protocol
