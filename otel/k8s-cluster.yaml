@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-cluster:3
+# Configuration: k8s-cluster:4
 receivers:
     k8s_cluster/source0_01HMS8GVNVFVD5TSWTKSJR1RY5:
         allocatable_types_to_report:
@@ -25,7 +25,7 @@ processors:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: stage2
+              value: stage3
     resource/source1_01HMS8GVNVFVD5TSWTKVNZS2JC:
         attributes:
             - action: insert
@@ -34,7 +34,7 @@ processors:
 exporters:
     otlp/bindplane-gateway-agent:
         compression: gzip
-        endpoint: bindplane-gateway-agent.bindplane-agent.svc.cluster.local:4317
+        endpoint: bindplane-gateway-agent.bindplane-agent.svc.cluster.local:44317
         retry_on_failure:
             enabled: true
             initial_interval: 5s

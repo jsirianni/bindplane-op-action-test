@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-gateway:1
+# Configuration: k8s-gateway:3
 receivers:
     otlp/source0_01HMS8J2WPEVAX0RSCPW4ZNWT5:
         protocols:
