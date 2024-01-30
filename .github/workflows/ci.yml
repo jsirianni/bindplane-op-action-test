@@ -34,4 +34,4 @@ jobs:
           target_branch: main
           token: ${{ secrets.GITHUB_TOKEN }}
           enable_otel_config_write_back: true
-          auto_rollout: true
+          enable_auto_rollout: true
