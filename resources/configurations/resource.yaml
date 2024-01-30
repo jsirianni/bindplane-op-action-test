@@ -27,7 +27,7 @@ spec:
                 - ephemeral-storage
                 - storage
             - name: collection_interval
-              value: 30
+              value: 60
             - name: distribution
               value: kubernetes
         - id: 01HMS8GVNVFVD5TSWTKVNZS2JC
@@ -142,7 +142,7 @@ spec:
                 - container
                 - volume
             - name: collection_interval
-              value: 60
+              value: 30
     destinations:
         - id: 01HMS8HBK216AD6V30GKX968XK
           name: bindplane-gateway-agent
