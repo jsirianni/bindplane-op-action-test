@@ -1,9 +1,9 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-node:7
+# Configuration: k8s-node:8
 receivers:
     kubeletstats/source1_01HMS8ERRSFYE4KGQVQ8DQC5X0:
         auth_type: serviceAccount
-        collection_interval: 1m0s
+        collection_interval: 30s
         endpoint: ${KUBE_NODE_NAME}:10250
         insecure_skip_verify: true
         metric_groups:
