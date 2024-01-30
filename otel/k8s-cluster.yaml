@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-cluster:4
+# Configuration: k8s-cluster:5
 receivers:
     k8s_cluster/source0_01HMS8GVNVFVD5TSWTKSJR1RY5:
         allocatable_types_to_report:
@@ -36,26 +36,12 @@ exporters:
         compression: gzip
         endpoint: bindplane-gateway-agent.bindplane-agent.svc.cluster.local:44317
         retry_on_failure:
-            enabled: true
-            initial_interval: 5s
-            max_elapsed_time: 300s
-            max_interval: 30s
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/bindplane-gateway-agent
+            enabled: false
         tls:
             insecure: true
-extensions:
-    file_storage/bindplane-gateway-agent:
-        compaction:
-            directory: $OIQ_OTEL_COLLECTOR_HOME/storage
-            on_rebound: true
-        directory: $OIQ_OTEL_COLLECTOR_HOME/storage
 service:
-    extensions:
-        - file_storage/bindplane-gateway-agent
     pipelines:
         logs/source1_01HMS8GVNVFVD5TSWTKVNZS2JC__bindplane-gateway-agent-0:
             receivers:

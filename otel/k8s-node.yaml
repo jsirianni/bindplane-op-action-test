@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-node:6
+# Configuration: k8s-node:7
 receivers:
     kubeletstats/source1_01HMS8ERRSFYE4KGQVQ8DQC5X0:
         auth_type: serviceAccount
@@ -45,26 +45,12 @@ exporters:
         compression: gzip
         endpoint: bindplane-gateway-agent.bindplane-agent.svc.cluster.local:44317
         retry_on_failure:
-            enabled: true
-            initial_interval: 5s
-            max_elapsed_time: 300s
-            max_interval: 30s
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/bindplane-gateway-agent
+            enabled: false
         tls:
             insecure: true
-extensions:
-    file_storage/bindplane-gateway-agent:
-        compaction:
-            directory: $OIQ_OTEL_COLLECTOR_HOME/storage
-            on_rebound: true
-        directory: $OIQ_OTEL_COLLECTOR_HOME/storage
 service:
-    extensions:
-        - file_storage/bindplane-gateway-agent
     pipelines:
         logs/source0_01HMS8ERRSFYE4KGQVQ2ZXXDZK__bindplane-gateway-agent-0:
             receivers:

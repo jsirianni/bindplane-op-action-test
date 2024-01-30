@@ -30,15 +30,9 @@ exporters:
             endpoint: otel-logs.coralogix.us:443
         private_key: (sensitive)
         retry_on_failure:
-            enabled: true
-            initial_interval: 5s
-            max_elapsed_time: 300s
-            max_interval: 30s
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/coralogix
+            enabled: false
         subsystem_name: test
         timeout: 5s
     coralogix/coralogix__metrics:
@@ -48,30 +42,18 @@ exporters:
             endpoint: otel-metrics.coralogix.us:443
         private_key: (sensitive)
         retry_on_failure:
-            enabled: true
-            initial_interval: 5s
-            max_elapsed_time: 300s
-            max_interval: 30s
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/coralogix
+            enabled: false
         subsystem_name: test
         timeout: 5s
     coralogix/coralogix__traces:
         application_name: bindplane-test
         private_key: (sensitive)
         retry_on_failure:
-            enabled: true
-            initial_interval: 5s
-            max_elapsed_time: 300s
-            max_interval: 30s
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/coralogix
+            enabled: false
         subsystem_name: test
         timeout: 5s
         traces:
@@ -85,12 +67,9 @@ exporters:
         num_workers: 0
         pipeline: null
         retry:
-            enabled: true
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/elasticsearch-internal
+            enabled: false
         tls: null
     elasticsearch/elasticsearch-internal__traces:
         endpoints:
@@ -99,12 +78,9 @@ exporters:
         num_workers: 0
         pipeline: null
         retry:
-            enabled: true
+            enabled: false
         sending_queue:
-            enabled: true
-            num_consumers: 10
-            queue_size: 5000
-            storage: file_storage/elasticsearch-internal
+            enabled: false
         tls: null
         traces_index: traces-generic-default
     prometheusremotewrite/prometheus-internal:
@@ -118,21 +94,7 @@ exporters:
             initial_interval: 5s
             max_elapsed_time: 300s
             max_interval: 30s
-extensions:
-    file_storage/coralogix:
-        compaction:
-            directory: $OIQ_OTEL_COLLECTOR_HOME/storage
-            on_rebound: true
-        directory: $OIQ_OTEL_COLLECTOR_HOME/storage
-    file_storage/elasticsearch-internal:
-        compaction:
-            directory: $OIQ_OTEL_COLLECTOR_HOME/storage
-            on_rebound: true
-        directory: $OIQ_OTEL_COLLECTOR_HOME/storage
 service:
-    extensions:
-        - file_storage/coralogix
-        - file_storage/elasticsearch-internal
     pipelines:
         logs/source0_01HMS8J2WPEVAX0RSCPW4ZNWT5__coralogix-0:
             receivers:
