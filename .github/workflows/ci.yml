@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run BindPlane Action
-        uses: observIQ/bindplane-op-action@v1.0.0
+        uses: observIQ/bindplane-op-action@main
         with:
           bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
@@ -32,6 +32,7 @@ jobs:
           configuration_path: ./resources/configurations/resource.yaml
           configuration_output_dir: otel
           target_branch: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          #token: ${{ secrets.GITHUB_TOKEN }}
+          github_url: abcd
           enable_otel_config_write_back: true
           enable_auto_rollout: true
