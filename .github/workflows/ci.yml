@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run BindPlane Action
-        uses: observIQ/bindplane-op-action@main
+        uses: observIQ/bindplane-op-action@fix/custom-github-url
         with:
           bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
