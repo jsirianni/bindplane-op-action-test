@@ -32,7 +32,7 @@ jobs:
           configuration_path: ./resources/configurations/resource.yaml
           configuration_output_dir: otel
           target_branch: main
-          #token: ${{ secrets.GITHUB_TOKEN }}
-          github_url: abcd
+          token: ${{ secrets.GITHUB_TOKEN }}
+          #github_url: abcd
           enable_otel_config_write_back: true
           enable_auto_rollout: true
