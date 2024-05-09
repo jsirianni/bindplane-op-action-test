@@ -49,7 +49,7 @@ status:
         name: ""
         status: 4
         options:
-            startAutomatically: true
+            startAutomatically: false
             rollbackOnFailure: false
             phaseAgentCount:
                 initial: 1
@@ -62,15 +62,15 @@ status:
             errors: 0
             pending: 0
             waiting: 0
-        startedAt: 2024-05-09T17:40:34.899811727Z
+        startedAt: 2024-05-09T21:42:13.486409275Z
         stages: []
         stage: 0
-    currentVersion: 2
-    pendingVersion: 2
+    currentVersion: 1
+    pendingVersion: 1
     latest: true
     pending: true
     current: true
-K__container
+__container
             processors:
                 - resource/source0_01HMS8ERRSFYE4KGQVQ2ZXXDZK
                 - batch/bindplane-gateway-agent

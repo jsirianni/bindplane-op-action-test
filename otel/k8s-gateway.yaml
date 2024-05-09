@@ -54,7 +54,7 @@ status:
         name: ""
         status: 4
         options:
-            startAutomatically: true
+            startAutomatically: false
             rollbackOnFailure: false
             phaseAgentCount:
                 initial: 1
@@ -67,15 +67,15 @@ status:
             errors: 0
             pending: 0
             waiting: 0
-        startedAt: 2024-05-09T17:40:34.803929816Z
+        startedAt: 2024-05-09T21:42:13.306463967Z
         stages: []
         stage: 0
-    currentVersion: 2
-    pendingVersion: 2
+    currentVersion: 1
+    pendingVersion: 1
     latest: true
     pending: true
     current: true
-eline: null
+line: null
         retry:
             enabled: false
         sending_queue:
