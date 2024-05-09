@@ -1,0 +1,71 @@
+apiVersion: bindplane.observiq.com/v1
+kind: Configuration
+metadata:
+    id: k8s-cluster
+    name: k8s-cluster
+spec:
+    contentType: ""
+    measurementInterval: ""
+    sources:
+        - id: 01HMS8GVNVFVD5TSWTKSJR1RY5
+          type: k8s_cluster
+          parameters:
+            - name: cluster_name
+              value: stage5
+            - name: node_conditions_to_report
+              value:
+                - Ready
+                - DiskPressure
+                - PIDPressure
+            - name: allocatable_types_to_report
+              value:
+                - cpu
+                - memory
+                - ephemeral-storage
+                - storage
+            - name: collection_interval
+              value: 30
+            - name: distribution
+              value: kubernetes
+        - id: 01HMS8GVNVFVD5TSWTKVNZS2JC
+          displayName: Production events
+          type: k8s_events
+          parameters:
+            - name: cluster_name
+              value: stage2
+            - name: namespaces
+              value:
+                - kube-system
+                - production
+    destinations:
+        - id: 01HMS8GVNVFVD5TSWTKZZNHB8R
+          name: bindplane-gateway-agent
+    selector:
+        matchLabels:
+            configuration: k8s-cluster
+status:
+    rollout:
+        name: ""
+        status: 4
+        options:
+            startAutomatically: true
+            rollbackOnFailure: false
+            phaseAgentCount:
+                initial: 1
+                multiplier: 1
+                maximum: 1
+            maxErrors: 0
+        phase: 0
+        progress:
+            completed: 0
+            errors: 0
+            pending: 0
+            waiting: 0
+        startedAt: 2024-05-09T17:40:34.704877251Z
+        stages: []
+        stage: 0
+    currentVersion: 3
+    pendingVersion: 3
+    latest: true
+    pending: true
+    current: true

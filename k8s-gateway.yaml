@@ -1,0 +1,77 @@
+apiVersion: bindplane.observiq.com/v1
+kind: Configuration
+metadata:
+    id: k8s-gateway
+    name: k8s-gateway
+spec:
+    contentType: ""
+    measurementInterval: ""
+    sources:
+        - id: 01HMS8J2WPEVAX0RSCPW4ZNWT5
+          type: otlp
+          parameters:
+            - name: telemetry_types
+              value:
+                - Metrics
+                - Logs
+                - Traces
+            - name: listen_address
+              value: 0.0.0.0
+            - name: grpc_port
+              value: 4317
+            - name: http_port
+              value: 4318
+            - name: enable_tls
+              value: false
+            - name: cert_file
+              value: ""
+            - name: key_file
+              value: ""
+            - name: mutual_tls
+              value: false
+            - name: ca_file
+              value: ""
+            - name: enable_grpc_timeout
+              value: true
+            - name: grpc_max_connection_idle
+              value: 60
+            - name: grpc_max_connection_age
+              value: 60
+            - name: grpc_max_connection_age_grace
+              value: 300
+    destinations:
+        - id: 01HMS8J2WPEVAX0RSCQ1NZ5KB6
+          name: coralogix
+        - id: 01HMS8K1AEYPBCBN47ZFYM3X7J
+          name: elasticsearch-internal
+        - id: 01HMS8KV7K4N2WKJ3337T9KJ2M
+          name: prometheus-internal
+    selector:
+        matchLabels:
+            configuration: k8s-gateway
+status:
+    rollout:
+        name: ""
+        status: 4
+        options:
+            startAutomatically: true
+            rollbackOnFailure: false
+            phaseAgentCount:
+                initial: 1
+                multiplier: 1
+                maximum: 1
+            maxErrors: 0
+        phase: 0
+        progress:
+            completed: 0
+            errors: 0
+            pending: 0
+            waiting: 0
+        startedAt: 2024-05-09T17:40:34.803929816Z
+        stages: []
+        stage: 0
+    currentVersion: 2
+    pendingVersion: 2
+    latest: true
+    pending: true
+    current: true
