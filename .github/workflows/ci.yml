@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run BindPlane Action
-        uses: observIQ/bindplane-op-action@ecd6305
+        uses: observIQ/bindplane-op-action@ecd630539ffb4ee285506d9aab8cc205e8e84273
         with:
           bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
