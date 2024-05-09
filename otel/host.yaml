@@ -1,0 +1,69 @@
+apiVersion: bindplane.observiq.com/v1
+kind: Configuration
+metadata:
+    id: host
+    name: host
+spec:
+    contentType: ""
+    measurementInterval: ""
+    sources:
+        - id: 01HD6QKQMZ03KPMQCXRX9SN4RE
+          type: host
+          parameters:
+            - name: metric_filtering
+              value:
+                - system.disk.io
+                - system.disk.io_time
+                - system.disk.merged
+                - system.disk.operation_time
+                - system.disk.operations
+                - system.disk.pending_operations
+                - system.disk.weighted_io_time
+                - system.cpu.time
+                - system.cpu.utilization
+            - name: enable_process
+              value: true
+            - name: process_metrics_filtering
+              value: []
+            - name: enable_process_filter
+              value: false
+            - name: process_include
+              value: []
+            - name: process_exclude
+              value: []
+            - name: process_filter_match_strategy
+              value: regexp
+            - name: collection_interval
+              value: 60
+    destinations:
+        - id: 01HD6QKTRKPWVS9SMRVHPCWN37
+          name: logging
+    selector:
+        matchLabels:
+            configuration: host
+status:
+    rollout:
+        name: ""
+        status: 4
+        options:
+            startAutomatically: true
+            rollbackOnFailure: false
+            phaseAgentCount:
+                initial: 1
+                multiplier: 1
+                maximum: 1
+            maxErrors: 0
+        phase: 0
+        progress:
+            completed: 0
+            errors: 0
+            pending: 0
+            waiting: 0
+        startedAt: 2024-05-09T17:40:34.59779895Z
+        stages: []
+        stage: 0
+    currentVersion: 2
+    pendingVersion: 2
+    latest: true
+    pending: true
+    current: true

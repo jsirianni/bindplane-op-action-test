@@ -1,59 +1,75 @@
-# This configuration is managed by BindPlane OP.
-# Configuration: k8s-cluster:7
-receivers:
-    k8s_cluster/source0_01HMS8GVNVFVD5TSWTKSJR1RY5:
-        allocatable_types_to_report:
-            - cpu
-            - memory
-            - ephemeral-storage
-            - storage
-        auth_type: serviceAccount
-        collection_interval: 30s
-        distribution: kubernetes
-        node_conditions_to_report:
-            - Ready
-            - DiskPressure
-            - PIDPressure
-    k8s_events/source1_01HMS8GVNVFVD5TSWTKVNZS2JC:
-        auth_type: serviceAccount
-        namespaces:
-            - kube-system
-            - production
-processors:
-    batch/bindplane-gateway-agent: null
-    resource/source0_01HMS8GVNVFVD5TSWTKSJR1RY5:
-        attributes:
-            - action: insert
-              key: k8s.cluster.name
-              value: stage4
-    resource/source1_01HMS8GVNVFVD5TSWTKVNZS2JC:
-        attributes:
-            - action: insert
-              key: k8s.cluster.name
+apiVersion: bindplane.observiq.com/v1
+kind: Configuration
+metadata:
+    id: k8s-cluster
+    name: k8s-cluster
+spec:
+    contentType: ""
+    measurementInterval: ""
+    sources:
+        - id: 01HMS8GVNVFVD5TSWTKSJR1RY5
+          type: k8s_cluster
+          parameters:
+            - name: cluster_name
+              value: stage5
+            - name: node_conditions_to_report
+              value:
+                - Ready
+                - DiskPressure
+                - PIDPressure
+            - name: allocatable_types_to_report
+              value:
+                - cpu
+                - memory
+                - ephemeral-storage
+                - storage
+            - name: collection_interval
+              value: 30
+            - name: distribution
+              value: kubernetes
+        - id: 01HMS8GVNVFVD5TSWTKVNZS2JC
+          displayName: Production events
+          type: k8s_events
+          parameters:
+            - name: cluster_name
               value: stage2
-exporters:
-    otlp/bindplane-gateway-agent:
-        compression: gzip
-        endpoint: bindplane-gateway-agent.bindplane-agent.svc.cluster.local:44317
-        retry_on_failure:
-            enabled: false
-        sending_queue:
-            enabled: false
-        tls:
-            insecure: true
-service:
-    pipelines:
-        logs/source1_01HMS8GVNVFVD5TSWTKVNZS2JC__bindplane-gateway-agent-0:
-            receivers:
-                - k8s_events/source1_01HMS8GVNVFVD5TSWTKVNZS2JC
-            processors:
-                - resource/source1_01HMS8GVNVFVD5TSWTKVNZS2JC
-                - batch/bindplane-gateway-agent
-            exporters:
-                - otlp/bindplane-gateway-agent
-        metrics/source0_01HMS8GVNVFVD5TSWTKSJR1RY5__bindplane-gateway-agent-0:
-            receivers:
-                - k8s_cluster/source0_01HMS8GVNVFVD5TSWTKSJR1RY5
+            - name: namespaces
+              value:
+                - kube-system
+                - production
+    destinations:
+        - id: 01HMS8GVNVFVD5TSWTKZZNHB8R
+          name: bindplane-gateway-agent
+    selector:
+        matchLabels:
+            configuration: k8s-cluster
+status:
+    rollout:
+        name: ""
+        status: 4
+        options:
+            startAutomatically: true
+            rollbackOnFailure: false
+            phaseAgentCount:
+                initial: 1
+                multiplier: 1
+                maximum: 1
+            maxErrors: 0
+        phase: 0
+        progress:
+            completed: 0
+            errors: 0
+            pending: 0
+            waiting: 0
+        startedAt: 2024-05-09T17:40:34.704877251Z
+        stages: []
+        stage: 0
+    currentVersion: 3
+    pendingVersion: 3
+    latest: true
+    pending: true
+    current: true
+JR1RY5
             processors:
                 - resource/source0_01HMS8GVNVFVD5TSWTKSJR1RY5
                 - batch/bindplane-gateway-agent
