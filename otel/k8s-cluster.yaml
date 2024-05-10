@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-cluster:2
+# Configuration: k8s-cluster:3
 receivers:
     k8s_cluster/source0_01HMS8GVNVFVD5TSWTKSJR1RY5:
         allocatable_types_to_report:
@@ -25,7 +25,7 @@ processors:
         attributes:
             - action: insert
               key: k8s.cluster.name
-              value: stage7
+              value: stage8
     resource/source1_01HMS8GVNVFVD5TSWTKVNZS2JC:
         attributes:
             - action: insert
