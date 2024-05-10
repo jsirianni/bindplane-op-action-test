@@ -14,7 +14,7 @@ spec:
           type: k8s_cluster
           parameters:
             - name: cluster_name
-              value: stage8
+              value: stage9
             - name: node_conditions_to_report
               value:
                 - Ready
