@@ -25,12 +25,12 @@ jobs:
           fetch-depth: 0
 
       - name: Run BindPlane Action
-        uses: observIQ/bindplane-op-action@main
+        uses: observIQ/bindplane-op-action@fix/input-glob
         with:
           bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
           destination_path: ./resources/destinations/resource.yaml
-          configuration_path: ./resources/configurations/resource.yaml
+          configuration_path: ./resources/configurations/*.yaml
           configuration_output_dir: otel
           target_branch: main
           token: ${{ secrets.GITHUB_TOKEN }}
