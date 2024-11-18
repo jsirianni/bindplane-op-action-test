@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-cluster:2
+# Configuration: k8s-cluster:3
 receivers:
     k8s_cluster/source0_01HMS8GVNVFVD5TSWTKSJR1RY5:
         allocatable_types_to_report:
@@ -8,7 +8,7 @@ receivers:
             - ephemeral-storage
             - storage
         auth_type: serviceAccount
-        collection_interval: 30s
+        collection_interval: 35s
         distribution: kubernetes
         node_conditions_to_report:
             - Ready
@@ -59,3 +59,6 @@ service:
                 - batch/bindplane-gateway-agent
             exporters:
                 - otlp/bindplane-gateway-agent
+    telemetry:
+        metrics:
+            address: 0.0.0.0:8888

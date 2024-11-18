@@ -1,5 +1,5 @@
 # This configuration is managed by BindPlane OP.
-# Configuration: k8s-gateway:1
+# Configuration: k8s-gateway:2
 receivers:
     otlp/source0_01HMS8J2WPEVAX0RSCPW4ZNWT5:
         protocols:
@@ -7,9 +7,9 @@ receivers:
                 endpoint: 0.0.0.0:4317
                 keepalive:
                     server_parameters:
-                        max_connection_age: 60s
-                        max_connection_age_grace: 300s
-                        max_connection_idle: 60s
+                        max_connection_age: 1m0s
+                        max_connection_age_grace: 5m0s
+                        max_connection_idle: 1m0s
                         time: 2h
                         timeout: 20s
                 max_recv_msg_size_mib: 4
@@ -26,9 +26,9 @@ processors:
 exporters:
     coralogix/coralogix__logs:
         application_name: bindplane-test
+        domain: coralogix.us
         logs:
             compression: gzip
-            endpoint: otel-logs.coralogix.us:443
         private_key: (sensitive)
         retry_on_failure:
             enabled: false
@@ -38,9 +38,9 @@ exporters:
         timeout: 5s
     coralogix/coralogix__metrics:
         application_name: bindplane-test
+        domain: coralogix.us
         metrics:
             compression: gzip
-            endpoint: otel-metrics.coralogix.us:443
         private_key: (sensitive)
         retry_on_failure:
             enabled: false
@@ -50,6 +50,7 @@ exporters:
         timeout: 5s
     coralogix/coralogix__traces:
         application_name: bindplane-test
+        domain: coralogix.us
         private_key: (sensitive)
         retry_on_failure:
             enabled: false
@@ -59,7 +60,6 @@ exporters:
         timeout: 5s
         traces:
             compression: gzip
-            endpoint: otel-traces.coralogix.us:443
     elasticsearch/elasticsearch-internal__logs:
         endpoints:
             - https://es-0.corp.net:9200
@@ -136,3 +136,6 @@ service:
             processors: []
             exporters:
                 - elasticsearch/elasticsearch-internal__traces
+    telemetry:
+        metrics:
+            address: 0.0.0.0:8888
