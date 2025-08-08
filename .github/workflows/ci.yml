@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run BindPlane Action
-        uses: observIQ/bindplane-op-action@joesirianni/bpop-3615-github-action-set-user-agent-and-enhance-error-logging
+        uses: observIQ/bindplane-op-action@v1.6.1
         with:
           bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
