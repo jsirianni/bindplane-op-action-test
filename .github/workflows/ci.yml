@@ -31,6 +31,7 @@ jobs:
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
           destination_path: ./resources/destinations/resource.yaml
           configuration_path: ./resources/configurations/*.yaml
+          processor_path: resources/processors
           configuration_output_dir: otel
           target_branch: main
           token: ${{ secrets.GITHUB_TOKEN }}

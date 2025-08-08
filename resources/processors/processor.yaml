@@ -1,0 +1,28 @@
+apiVersion: bindplane.observiq.com/v1
+kind: Processor
+metadata:
+    name: message-detail-parser
+spec:
+    type: parse_regex
+    parameters:
+        - name: telemetry_types
+          value:
+            - Logs
+        - name: log_condition
+          value:
+            ottl: body["Message"] != nil and body["logger"] == "debug"
+            ui:
+                operator: ""
+                statements:
+                    - key: body['logger']
+                      match: ""
+                      operator: Equals
+                      value: "debug"
+        - name: log_source_field_type
+          value: Body
+        - name: log_body_source_field
+          value: Message
+        - name: log_target_field_type
+          value: Body
+        - name: log_regex_pattern
+          value: ^(?s)File is not valid.*?File Name:\s+(?P<FileName>[^\r\n]+)\s*$
