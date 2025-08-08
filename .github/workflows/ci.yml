@@ -38,3 +38,4 @@ jobs:
           #github_url: abcd
           enable_otel_config_write_back: true
           enable_auto_rollout: true
+          user_agent: joe
