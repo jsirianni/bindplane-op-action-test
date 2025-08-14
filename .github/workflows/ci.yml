@@ -25,9 +25,9 @@ jobs:
           fetch-depth: 0
 
       - name: Run BindPlane Action
-        uses: observIQ/bindplane-op-action@v1.6.1
+        uses: observIQ/bindplane-op-action@joesirianni/bpop-3651-bindplane-action-handle-remote-url-with-trailing-slash
         with:
-          bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}
+          bindplane_remote_url: ${{ secrets.BINDPLANE_REMOTE_URL }}/
           bindplane_api_key: ${{ secrets.BINDPLANE_SECRET_KEY }}
           destination_path: ./resources/destinations/resource.yaml
           configuration_path: ./resources/configurations/*.yaml
